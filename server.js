@@ -16,15 +16,29 @@ app.get("/", (req, res) => {
   res.send("🚀 ShopSmart Backend is Live!");
 });
 
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running and connected to frontend!");
+});
 // Middleware
 app.use(cors());
 app.use(express.json());
 // server.js
 
+const allowedOrigins = [
+  "https://e-commerce-three-peach-20.vercel.app", // ✅ your Vercel frontend
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
+
 
 
 // Routes
