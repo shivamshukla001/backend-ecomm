@@ -12,6 +12,10 @@ dotenv.config();
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("🚀 ShopSmart Backend is Live!");
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
