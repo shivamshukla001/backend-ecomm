@@ -46,8 +46,7 @@ app.use(
 // MongoDB Connection
 mongoose
   .connect(
-    process.env.MONGO_URI ||
-      "mongodb+srv://shivanirathore779_db_user:QfdQiYJYfr7umE6Y@cluster0.5sshtkt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    process.env.MONGO_URI 
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
